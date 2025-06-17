@@ -9,6 +9,24 @@
   </head>
   <body>
     <app-root></app-root>
+    <script>
+      document.addEventListener("spLiveChatLoaded", function () {
+        window.sp.liveChat.config({
+          primaryColor: "#f3038a",
+          colorScheme: "dark",
+          chatPosition: {
+            top: "20px",
+            // right: '90px'
+          },
+          // height: '880px',
+          language: "en",
+          // custom_img_button: {
+          //     url: 'https://img.freepik.com/free-photo/a-cupcake-with-a-strawberry-on-top-and-a-strawberry-on-the-top_1340-35087.jpg',
+          //     hover_url: 'https://png.pngtree.com/png-clipart/20190903/original/pngtree-loop-icon-png-image_4419929.jpg',
+          // }
+        });
+      });
+    </script>
     <script
       src="https://cdn.pulse.is/livechat/loader.js"
       data-live-chat-id="6799fd819ed45592f60a8dff"
