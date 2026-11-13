@@ -79,3 +79,10 @@
 [  390417ms] [ERROR] WebSocket connection to 'wss://lc.pulse.is/' failed: Error during WebSocket handshake: Unexpected response code: 403 @ http://localhost:4300/main.js:109
 [  400498ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://lc.pulse.is/live-chat/widget/6799fd819ed45592f60a8dff/fde91b19-a407-4095-9a5e-d4b730fb4ab4/messages?size=1000&page=1:1
 [  400648ms] [ERROR] WebSocket connection to 'wss://lc.pulse.is/' failed: Error during WebSocket handshake: Unexpected response code: 403 @ http://localhost:4300/main.js:109
+[  410729ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://lc.pulse.is/live-chat/widget/6799fd819ed45592f60a8dff/fde91b19-a407-4095-9a5e-d4b730fb4ab4/messages?size=1000&page=1:1
+[  410877ms] [ERROR] WebSocket connection to 'wss://lc.pulse.is/' failed: Error during WebSocket handshake: Unexpected response code: 403 @ http://localhost:4300/main.js:109
+[  420960ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://lc.pulse.is/live-chat/widget/6799fd819ed45592f60a8dff/fde91b19-a407-4095-9a5e-d4b730fb4ab4/messages?size=1000&page=1:1
+[  421112ms] [ERROR] WebSocket connection to 'wss://lc.pulse.is/' failed: Error during WebSocket handshake: Unexpected response code: 403 @ http://localhost:4300/main.js:109
+[  431206ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://lc.pulse.is/live-chat/widget/6799fd819ed45592f60a8dff/fde91b19-a407-4095-9a5e-d4b730fb4ab4/messages?size=1000&page=1:1
+[  431362ms] [ERROR] WebSocket connection to 'wss://lc.pulse.is/' failed: Error during WebSocket handshake: Unexpected response code: 403 @ http://localhost:4300/main.js:109
+[  435351ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://empty-chat-stage.vercell.app/favicon.ico:1
