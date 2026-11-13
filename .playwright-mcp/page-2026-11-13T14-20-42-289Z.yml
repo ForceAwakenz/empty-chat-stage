@@ -1,0 +1,82 @@
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - navigation [ref=e4]:
+      - link "Setup" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - link "#51595 Auto open" [ref=e6] [cursor=pointer]:
+        - /url: /auto-open
+      - link "#72959 Viber link" [ref=e7] [cursor=pointer]:
+        - /url: /viber-link
+      - link "#76642 History" [ref=e8] [cursor=pointer]:
+        - /url: /history
+    - generic [ref=e9]:
+      - text: Prod CDN · bot
+      - code [ref=e10]: 6799fd819ed45592f60a8dff
+      - text: · floating
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - 'heading "#76642: dialog history disappears after WS reconnect" [level=1] [ref=e13]'
+      - paragraph [ref=e14]:
+        - text: Branch
+        - code [ref=e15]: bf-76642-livechat-widget-dialog-history-disappears-new
+        - text: ". After a socket drop the widget reconnects in 10s and reloads history. Bug: a new visitor (or a failed history request) ends with an empty dialog."
+      - generic [ref=e16]:
+        - heading "Steps" [level=3] [ref=e17]
+        - list [ref=e18]:
+          - listitem [ref=e19]:
+            - button "Reset visitor" [ref=e20] [cursor=pointer]
+            - text: (acts as incognito).
+          - listitem [ref=e21]: Open the chat, send 2–3 messages, wait for bot replies. Note "Messages in widget".
+          - listitem [ref=e22]: Press a break button below. Wait about 15s for "WS open" in the log.
+          - listitem [ref=e23]: "Expect: \"Messages in widget\" is the same as before. Old build: only the start block is left."
+      - generic [ref=e24]:
+        - heading "Break the connection" [level=3] [ref=e25]
+        - generic [ref=e26]:
+          - button "Close WebSocket now" [ref=e27] [cursor=pointer]
+          - button "Go offline 15s" [ref=e28] [cursor=pointer]
+          - button "sp.liveChat.open()" [ref=e29] [cursor=pointer]
+        - heading "Fail the history request on the next reconnect (old visitor case)" [level=4] [ref=e30]
+        - generic [ref=e31]:
+          - button "Network error + close WS" [ref=e32] [cursor=pointer]
+          - button "Malformed 200 + close WS" [ref=e33] [cursor=pointer]
+        - paragraph [ref=e34]: "Expect: messages stay. Old build: the dialog is wiped."
+      - generic [ref=e35]:
+        - heading "History requests" [level=3] [ref=e36]
+        - list [ref=e37]:
+          - listitem [ref=e38]: None yet. A new visitor has no history request until the first message.
+      - generic [ref=e39]:
+        - generic [ref=e41]:
+          - heading "Widget state (refreshes every 1s)" [level=3] [ref=e42]
+          - table [ref=e43]:
+            - row [ref=e44]:
+              - rowheader "Widget mounted" [ref=e45]
+              - cell "no" [ref=e46]
+            - row [ref=e47]:
+              - rowheader "Messages in widget" [ref=e48]
+              - cell "— (rendered only while chat is open)" [ref=e49]
+            - row [ref=e50]:
+              - rowheader "local.spLiveChatOpened" [ref=e51]:
+                - code [ref=e52]: local.spLiveChatOpened
+              - cell [ref=e53]:
+                - code [ref=e54]: —
+            - row [ref=e55]:
+              - rowheader "local.spSubscriberId" [ref=e56]:
+                - code [ref=e57]: local.spSubscriberId
+              - cell [ref=e58]:
+                - code [ref=e59]: —
+            - row [ref=e60]:
+              - rowheader "local.spToastClosed" [ref=e61]:
+                - code [ref=e62]: local.spToastClosed
+              - cell [ref=e63]:
+                - code [ref=e64]: —
+            - row [ref=e65]:
+              - rowheader "session.spLiveChatAutoOpenShown" [ref=e66]:
+                - code [ref=e67]: session.spLiveChatAutoOpenShown
+              - cell [ref=e68]:
+                - code [ref=e69]: —
+        - generic [ref=e71]:
+          - heading [level=3] [ref=e72]:
+            - text: Event log
+            - button "clear" [ref=e73] [cursor=pointer]
+          - list [ref=e74]:
+            - listitem [ref=e75]: No events yet.

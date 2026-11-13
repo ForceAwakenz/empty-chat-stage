@@ -1,0 +1,145 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - navigation [ref=e4]:
+        - link "Setup" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - link "#51595 Auto open" [ref=e6] [cursor=pointer]:
+          - /url: /auto-open
+        - link "#72959 Viber link" [ref=e7] [cursor=pointer]:
+          - /url: /viber-link
+        - link "#76642 History" [ref=e8] [cursor=pointer]:
+          - /url: /history
+      - generic [ref=e9]:
+        - text: Prod CDN · bot
+        - code [ref=e10]: 6799fd819ed45592f60a8dff
+        - text: · floating
+    - main [ref=e11]:
+      - generic [ref=e12]:
+        - 'heading "#51595: widget auto open page 1" [level=1] [ref=e13]'
+        - paragraph [ref=e14]:
+          - text: Branch
+          - code [ref=e15]: ft-51595-livechat-widget-auto-open
+          - text: . With
+          - code [ref=e16]: "autoOpen: true"
+          - text: the floating widget opens once per tab, on the first page load. Toggles below reload the page.
+        - generic [ref=e17]:
+          - heading "Config (applied at load)" [level=3] [ref=e18]
+          - generic [ref=e19]:
+            - 'button "autoOpen: ON After click: reload; chat never auto opens (old behavior)" [ref=e20] [cursor=pointer]':
+              - text: "autoOpen: ON"
+              - generic [ref=e21]: "After click: reload; chat never auto opens (old behavior)"
+            - 'button "Simulate mobile UA: ON After click: reload; desktop behavior" [ref=e22] [cursor=pointer]':
+              - text: "Simulate mobile UA: ON"
+              - generic [ref=e23]: "After click: reload; desktop behavior"
+            - 'button "Block sessionStorage: off After click: reload; no auto open; session row shows \"blocked\"" [ref=e24] [cursor=pointer]':
+              - text: "Block sessionStorage: off"
+              - generic [ref=e25]: "After click: reload; no auto open; session row shows \"blocked\""
+        - generic [ref=e26]:
+          - heading "Navigation (full page loads)" [level=3] [ref=e27]
+          - generic [ref=e28]:
+            - 'link "Go to page 2 (same tab) Expect: no auto open; chat stays as you left it" [ref=e29] [cursor=pointer]':
+              - /url: /auto-open/2
+              - text: Go to page 2 (same tab)
+              - generic [ref=e30]: "Expect: no auto open; chat stays as you left it"
+            - 'link "Open in new tab Expect (autoOpen ON): chat opens in the new tab" [ref=e31] [cursor=pointer]':
+              - /url: /auto-open
+              - text: Open in new tab
+              - generic [ref=e32]: "Expect (autoOpen ON): chat opens in the new tab"
+            - 'button "Reload this page Expect: no auto open; chat stays as you left it" [ref=e33] [cursor=pointer]':
+              - text: Reload this page
+              - generic [ref=e34]: "Expect: no auto open; chat stays as you left it"
+        - generic [ref=e35]:
+          - heading "Manual controls" [level=3] [ref=e36]
+          - generic [ref=e37]:
+            - 'button "sp.liveChat.open() Expect: chat opens. Build without JS API: log says \"missing\"" [ref=e38] [cursor=pointer]':
+              - text: sp.liveChat.open()
+              - generic [ref=e39]: "Expect: chat opens. Build without JS API: log says \"missing\""
+            - 'button "sp.liveChat.close() Expect: chat closes; spLiveChatOpened becomes \"—\"" [ref=e40] [cursor=pointer]':
+              - text: sp.liveChat.close()
+              - generic [ref=e41]: "Expect: chat closes; spLiveChatOpened becomes \"—\""
+            - 'button "sp.liveChat.toggle() Expect: chat flips open/closed" [ref=e42] [cursor=pointer]':
+              - text: sp.liveChat.toggle()
+              - generic [ref=e43]: "Expect: chat flips open/closed"
+          - generic [ref=e44]:
+            - 'button "Clear session flag (act as new tab) Expect: next reload auto opens the chat (autoOpen ON)" [ref=e45] [cursor=pointer]':
+              - text: Clear session flag (act as new tab)
+              - generic [ref=e46]: "Expect: next reload auto opens the chat (autoOpen ON)"
+            - 'button "Clear spLiveChatOpened Expect: next reload keeps chat closed, unless auto open fires" [ref=e47] [cursor=pointer]':
+              - text: Clear spLiveChatOpened
+              - generic [ref=e48]: "Expect: next reload keeps chat closed, unless auto open fires"
+            - 'button "Reset visitor Expect: reload as new visitor; chat opens if autoOpen ON (desktop)" [ref=e49] [cursor=pointer]':
+              - text: Reset visitor
+              - generic [ref=e50]: "Expect: reload as new visitor; chat opens if autoOpen ON (desktop)"
+        - generic [ref=e51]:
+          - heading "Scenarios" [level=3] [ref=e52]
+          - table [ref=e53]:
+            - row [ref=e54]:
+              - columnheader "Do" [ref=e55]
+              - columnheader "Expect" [ref=e56]
+            - row [ref=e57]:
+              - cell "autoOpen ON, Reset visitor" [ref=e58]
+              - cell [ref=e59]:
+                - text: Chat opens.
+                - code [ref=e60]: session.spLiveChatAutoOpenShown
+                - text: = true.
+            - row [ref=e61]:
+              - cell "Close chat, go to next page" [ref=e62]
+              - cell "Chat stays closed." [ref=e63]
+            - row [ref=e64]:
+              - cell "Open in new tab" [ref=e65]
+              - cell "Chat opens in the new tab." [ref=e66]
+            - row [ref=e67]:
+              - cell "Reload this page" [ref=e68]
+              - 'cell "Same tab: chat does not auto open again (only if it was closed)." [ref=e69]'
+            - row [ref=e70]:
+              - cell "autoOpen off, Reset visitor" [ref=e71]
+              - cell "Chat stays closed (old behavior)." [ref=e72]
+            - row [ref=e73]:
+              - cell "Simulate mobile ON, Reset visitor" [ref=e74]
+              - cell "Chat stays closed." [ref=e75]
+            - row [ref=e76]:
+              - cell "Block sessionStorage ON, Reset visitor" [ref=e77]
+              - cell "Chat stays closed. Storage row shows \"blocked\"." [ref=e78]
+            - row [ref=e79]:
+              - 'cell "Known corner case: leave chat open, close tab, open site in new tab, close chat, go to next page" [ref=e80]'
+              - cell "Chat opens again on next page (accepted behavior)." [ref=e81]
+        - generic [ref=e82]:
+          - generic [ref=e84]:
+            - heading "Widget state (refreshes every 1s)" [level=3] [ref=e85]
+            - table [ref=e86]:
+              - row [ref=e87]:
+                - rowheader "Widget mounted" [ref=e88]
+                - cell "no" [ref=e89]
+              - row [ref=e90]:
+                - rowheader "Messages in widget" [ref=e91]
+                - cell "— (rendered only while chat is open)" [ref=e92]
+              - row [ref=e93]:
+                - rowheader "local.spLiveChatOpened" [ref=e94]:
+                  - code [ref=e95]: local.spLiveChatOpened
+                - cell [ref=e96]:
+                  - code [ref=e97]: "true"
+              - row [ref=e98]:
+                - rowheader "local.spSubscriberId" [ref=e99]:
+                  - code [ref=e100]: local.spSubscriberId
+                - cell [ref=e101]:
+                  - code [ref=e102]: fde91b19-a407-4095-9a5e-d4b730fb4ab4
+              - row [ref=e103]:
+                - rowheader "local.spToastClosed" [ref=e104]:
+                  - code [ref=e105]: local.spToastClosed
+                - cell [ref=e106]:
+                  - code [ref=e107]: —
+              - row [ref=e108]:
+                - rowheader "session.spLiveChatAutoOpenShown" [ref=e109]:
+                  - code [ref=e110]: session.spLiveChatAutoOpenShown
+                - cell [ref=e111]:
+                  - code [ref=e112]: —
+          - generic [ref=e114]:
+            - heading [level=3] [ref=e115]:
+              - text: Event log
+              - button "clear" [ref=e116] [cursor=pointer]
+            - list [ref=e117]:
+              - listitem [ref=e118]: No events yet.
+  - generic:
+    - main:
+      - button "Chat" [ref=e119] [cursor=pointer]

@@ -1,0 +1,105 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - banner [ref=f1e3]:
+      - navigation [ref=f1e4]:
+        - link "Setup" [ref=f1e5] [cursor=pointer]:
+          - /url: /
+        - link "#51595 Auto open" [ref=f1e6] [cursor=pointer]:
+          - /url: /auto-open
+        - link "#72959 Viber link" [ref=f1e7] [cursor=pointer]:
+          - /url: /viber-link
+        - link "#76642 History" [ref=f1e8] [cursor=pointer]:
+          - /url: /history
+      - generic [ref=f1e9]:
+        - text: Prod CDN · bot
+        - code [ref=f1e10]: 6799fd819ed45592f60a8dff
+        - text: · floating
+    - main [ref=f1e11]:
+      - generic [ref=f1e12]:
+        - 'heading "#72959: Viber link opens wrong profile" [level=1] [ref=f1e13]'
+        - paragraph [ref=f1e14]:
+          - text: Branch
+          - code [ref=f1e15]: bf-72959-livechat-viber-link-wrong-profile
+          - text: ". Bug: a welcome menu button with"
+          - code [ref=f1e16]: viber://chat?number=…
+          - text: became
+          - code [ref=f1e17]: viber://pa?chatURI=null&context=…
+          - text: .
+        - generic [ref=f1e18]:
+          - heading "1. Set up the bot (admin, once)" [level=3] [ref=f1e19]
+          - list [ref=f1e20]:
+            - listitem [ref=f1e21]: "Open the bot: Bot settings → Bot welcome → Welcome menu."
+            - listitem [ref=f1e22]: Add one "Open website" button per URL below. Save.
+            - listitem [ref=f1e23]: Reload this page and open the chat.
+          - table [ref=f1e24]:
+            - row [ref=f1e25]:
+              - columnheader "Button URL" [ref=f1e26]
+              - columnheader "Expected widget href" [ref=f1e27]
+              - columnheader [ref=f1e28]
+            - row [ref=f1e29]:
+              - cell [ref=f1e30]:
+                - code [ref=f1e31]: viber://chat?number=380000000000
+              - cell "Kept as typed. No context param." [ref=f1e32]
+              - cell [ref=f1e33]:
+                - button "copy" [ref=f1e34] [cursor=pointer]
+            - row [ref=f1e35]:
+              - cell [ref=f1e36]:
+                - code [ref=f1e37]: viber://pa?chatURI=sendpulse
+              - cell "viber://pa?chatURI=sendpulse&context=<uuid>" [ref=f1e38]
+              - cell [ref=f1e39]:
+                - button "copy" [ref=f1e40] [cursor=pointer]
+            - row [ref=f1e41]:
+              - cell [ref=f1e42]:
+                - code [ref=f1e43]: https://t.me/some_bot
+              - cell "https://t.me/some_bot?start=<uuid> (unchanged behavior)" [ref=f1e44]
+              - cell [ref=f1e45]:
+                - button "copy" [ref=f1e46] [cursor=pointer]
+            - row [ref=f1e47]:
+              - cell [ref=f1e48]:
+                - code [ref=f1e49]: https://m.me/some.page
+              - cell "https://m.me/some.page?ref=<uuid> (unchanged behavior)" [ref=f1e50]
+              - cell [ref=f1e51]:
+                - button "copy" [ref=f1e52] [cursor=pointer]
+            - row [ref=f1e53]:
+              - cell [ref=f1e54]:
+                - code [ref=f1e55]: https://example.com/?a=1
+              - cell "Kept as typed (unchanged behavior)" [ref=f1e56]
+              - cell [ref=f1e57]:
+                - button "copy" [ref=f1e58] [cursor=pointer]
+        - generic [ref=f1e59]:
+          - heading "2. Check widget menu links (live, chat must be open)" [level=3] [ref=f1e60]
+          - button "sp.liveChat.open()" [ref=f1e62] [cursor=pointer]
+          - table [ref=f1e63]:
+            - row [ref=f1e64]:
+              - columnheader "Button" [ref=f1e65]
+              - columnheader "Rendered href" [ref=f1e66]
+              - columnheader "Verdict" [ref=f1e67]
+            - row [ref=f1e68]:
+              - cell "No menu links found. Open the chat, or add buttons to the bot." [ref=f1e69]
+          - paragraph [ref=f1e70]: Bot-link hrefs get a new uuid after each click. Without Viber installed, the check above replaces "Inspect element".
+        - generic [ref=f1e72]:
+          - heading [level=3] [ref=f1e73]:
+            - text: Event log
+            - button "clear" [ref=f1e74] [cursor=pointer]
+          - list [ref=f1e75]:
+            - listitem [ref=f1e76]: No events yet.
+  - generic [active]:
+    - main:
+      - generic [ref=f1e77]:
+        - generic [ref=f1e79]:
+          - heading "Напишіть нам" [level=5] [ref=f1e80]
+          - generic [ref=f1e81] [cursor=pointer]
+        - generic [ref=f1e87]:
+          - link [ref=f1e88] [cursor=pointer]:
+            - /url: https://ig.me/m/supervedmidskiy?ref=3732893e-d307-41a3-a075-b9ee1f6652b9
+            - img "instagram" [ref=f1e89]
+            - text: igg
+          - link [ref=f1e90] [cursor=pointer]:
+            - /url: https://t.me/southparkbotbot?start=ab127160-5de4-412b-a979-d0eb1bf5ef59
+            - img "telegram" [ref=f1e91]
+            - text: tgrm
+          - button "input" [ref=f1e92] [cursor=pointer]
+          - button "btn" [ref=f1e93] [cursor=pointer]
+        - generic [ref=f1e95]:
+          - textbox "Send a message..." [ref=f1e97]
+          - button "Choose File" [ref=f1e99]

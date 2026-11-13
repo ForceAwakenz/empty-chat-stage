@@ -1,8 +1,211 @@
-html {
+:root {
+  --bg: #14161a;
+  --surface: #1d2026;
+  --text: #e6e8eb;
+  --muted: #9aa1ab;
+  --border: #2e333b;
+  --accent: #f3038a;
+  --pass: #4ade80;
+  --fail: #f87171;
+  --warn-bg: #3b3115;
   color-scheme: dark;
-  background: #151419;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 system-ui, sans-serif;
+}
+
+a {
+  color: var(--accent);
+}
+
+code {
+  font-size: 12px;
+  word-break: break-all;
+}
+
+small,
+.muted {
+  color: var(--muted);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  nav a {
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  nav a.active {
+    background: var(--accent);
+    color: #fff;
+  }
+}
+
+// Bottom padding keeps controls clear of the floating widget button.
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 16px 160px;
+}
+
+.card {
+  margin: 16px 0;
+  padding: 12px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  h3 {
+    margin: 0 0 8px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  label.check {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+input:not([type='checkbox']),
+select {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+button,
+.button {
+  padding: 6px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+
+  .expect {
+    display: block;
+    max-width: 280px;
+    color: inherit;
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  &.secondary {
+    background: transparent;
+    color: var(--accent);
+  }
+
+  &.on {
+    outline: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    font-weight: 600;
+  }
+
+  &.link {
+    padding: 0 4px;
+    border: none;
+    background: none;
+    color: var(--accent);
+    text-decoration: underline;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+}
+
+.pass {
+  color: var(--pass);
+  font-weight: 600;
+}
+
+.fail {
+  color: var(--fail);
+  font-weight: 600;
+}
+
+.warn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--warn-bg);
+}
+
+.log {
+  max-height: 320px;
+  margin: 0;
+  padding-left: 0;
+  overflow-y: auto;
+  list-style: none;
+  font: 12px/1.6 ui-monospace, monospace;
+
+  time {
+    color: var(--muted);
+  }
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 0 16px;
+}
+
+#live-chat-target:not(:empty) {
+  max-width: 420px;
+  height: 640px;
+  margin: 0 auto 32px;
 }
